@@ -50,9 +50,9 @@ class MainActivity : AppCompatActivity() {
          */
         TabLayoutMediator(tabs, viewPager) {tab, position ->
             when(position) {
-                0 -> tab.text = "탭1"
-                1 -> tab.text = "탭2"
-                2 -> tab.text = "탭3"
+                0 -> tab.text = "전체"
+                1 -> tab.text = "사용 완료"
+                2 -> tab.text = "사용 불가"
             }
         }.attach()
     }

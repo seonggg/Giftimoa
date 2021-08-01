@@ -170,7 +170,7 @@ class RegistActivity : AppCompatActivity() {
                 var str_time: String = time_edit.text.toString()
                 var str_place: String = place_edit.text.toString()
                 var str_memo: String = memo_edit.text.toString()
-                var str_state: String = "가능"
+                var str_state: String = "사용 가능"
 
                 sqlitedb = dbManager.writableDatabase
                 Log.d("sys", "db시작")
