@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:background="#5BEFEFEF"
             android:backgroundTint="#D3D3D3" />
 
@@ -39,7 +40,7 @@
             android:layout_height="wrap_content"
             android:text="기프티콘 이름"
             android:textColor="@color/colorText"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="5dp"/>
 
         <EditText
             android:id="@+id/name_edit"
@@ -47,6 +48,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:background="@drawable/editbox_border"
+            android:layout_marginBottom="10dp"
             android:hint="상품명"/>
 
         <TextView
@@ -55,7 +57,7 @@
             android:layout_height="wrap_content"
             android:text="유효기간"
             android:textColor="@color/colorText"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="5dp"/>
 
         <EditText
             android:id="@+id/time_edit"
@@ -63,6 +65,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:background="@drawable/editbox_border"
+            android:layout_marginBottom="10dp"
             android:hint="년/월/일"/>
 
         <TextView
@@ -71,7 +74,7 @@
             android:layout_height="wrap_content"
             android:text="교환처"
             android:textColor="@color/colorText"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="5dp"/>
 
         <EditText
             android:id="@+id/place_edit"
@@ -79,6 +82,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:background="@drawable/editbox_border"
+            android:layout_marginBottom="10dp"
             android:hint="교환처"/>
 
         <TextView
@@ -87,7 +91,7 @@
             android:layout_height="wrap_content"
             android:text="메모"
             android:textColor="@color/colorText"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="5dp"/>
 
         <EditText
             android:id="@+id/memo_edit"
@@ -95,8 +99,9 @@
             android:layout_height="80dp"
             android:textColor="@color/black"
             android:background="@drawable/editbox_border"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="viewStart"
             android:hint="메모를 하세요."/>
-
 
     </LinearLayout>
 

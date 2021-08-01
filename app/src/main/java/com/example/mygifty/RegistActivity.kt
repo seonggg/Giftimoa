@@ -1,20 +1,21 @@
 package com.example.mygifty
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.AssetManager
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
 import android.graphics.Bitmap
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
-import android.widget.Toolbar
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -23,22 +24,29 @@ import java.io.*
 
 class RegistActivity : AppCompatActivity() {
 
+    //db
+    lateinit var dbManager: DBManager
+    lateinit var sqlitedb: SQLiteDatabase
+
     private val REQUEST_READ_EXTERNAL_STORAGE = 1000
 
     lateinit var tess: TessBaseAPI //Tesseract API 객체 생성
     var dataPath: String = "" //데이터 경로 변수 선언
 
-    lateinit var regist_img : ImageView
-    lateinit var name_edit : EditText
-    lateinit var time_edit : EditText
-    lateinit var place_edit : EditText
+    var dataUri: Uri? = null
+
+    lateinit var regist_img: ImageView
+    lateinit var name_edit: EditText
+    lateinit var time_edit: EditText
+    lateinit var place_edit: EditText
     lateinit var memo_edit: EditText
 
-    val Gallery= 1
+    val Gallery = 1
+
     //이미지에서 추출한 날짜 변수
-    lateinit var date_yy :String
-    lateinit var date_mm :String
-    lateinit var date_dd :String
+    lateinit var date_yy: String
+    lateinit var date_mm: String
+    lateinit var date_dd: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,12 +57,15 @@ class RegistActivity : AppCompatActivity() {
         place_edit = findViewById(R.id.place_edit)
         memo_edit = findViewById(R.id.memo_edit)
 
+        //db
+        dbManager = DBManager(this, "gifticon", null, 1)
+
         //상단 바 세팅
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         //이미지 추가하기
-        regist_img=findViewById(R.id.regist_img)
+        regist_img = findViewById(R.id.regist_img)
         regist_img.setOnClickListener({
             //이미지 업로드 코드
             //권한이 부여되었는지 확인
@@ -102,60 +113,77 @@ class RegistActivity : AppCompatActivity() {
 
                 var lang: String = "kor+eng"
                 tess = TessBaseAPI() //api준비
-                Log.d("sys","api")
+                Log.d("sys", "api")
                 tess.setDebug(true)
-                Log.d("sys","디버그")
+                Log.d("sys", "디버그")
                 tess.init(dataPath, lang) //해당 사용할 언어데이터로 초기화
-                Log.d("sys","언어초기화")
+                Log.d("sys", "언어초기화")
 
-                //이미지 가공후 텍스트뷰에 띄우기: R.drawble.t1==imagefile
-                //processImage(BitmapFactory.decodeResource(resources, R.drawable.t7))
             }
         })
-
-        //텍스트추출 시험 실행
     }
 
-    private fun loadImage(){
+    private fun loadImage() {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
 
-        startActivityForResult(Intent.createChooser(intent,"Load Picture"),Gallery)
+        startActivityForResult(Intent.createChooser(intent, "Load Picture"), Gallery)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == Gallery){
-            if(resultCode == RESULT_OK){
-                var dataUri = data?.data
-                try{
-                    var bitmap : Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver,dataUri)
+        if (requestCode == Gallery) {
+            if (resultCode == RESULT_OK) {
+                dataUri = data?.data
+                try {
+                    var bitmap: Bitmap =
+                        MediaStore.Images.Media.getBitmap(this.contentResolver, dataUri)
                     regist_img.setImageBitmap(bitmap)
                     processImage(bitmap)
-                }catch (e:Exception){
-                    Toast.makeText(this,"$e",Toast.LENGTH_SHORT).show()
+                } catch (e: Exception) {
+                    Toast.makeText(this, "$e", Toast.LENGTH_SHORT).show()
                 }
-            }
-            else{
+            } else {
                 //something wrong
             }
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.regist_menu,menu)
+        menuInflater.inflate(R.menu.regist_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item?.itemId){
-            android.R.id.home->{
+        when (item?.itemId) {
+            android.R.id.home -> {
                 finish()
                 return true
             }
-            else->{
+            //등록버튼 누르기
+            R.id.action_regist -> {
+
+                var str_uri: String = dataUri.toString()
+                var str_name: String = name_edit.text.toString()
+                var str_time: String = time_edit.text.toString()
+                var str_place: String = place_edit.text.toString()
+                var str_memo: String = memo_edit.text.toString()
+                var str_state: String = "가능"
+
+                sqlitedb = dbManager.writableDatabase
+                Log.d("sys", "db시작")
+                sqlitedb.execSQL("INSERT INTO gifticon VALUES ('" + str_uri + "', '" + str_name + "', '" + str_time + "', '" + str_place + "', '" + str_memo + "', '" + str_state + "')")
+                Log.d("sys", "삽입")
+                sqlitedb.close()
+
+                val intent = Intent(this, Info::class.java)
+                intent.putExtra("intent_uri", str_uri)
+                startActivity(intent)
+                return true
+            }
+            else -> {
                 return super.onOptionsItemSelected(item)
             }
         }
@@ -220,7 +248,6 @@ class RegistActivity : AppCompatActivity() {
         ocrResult = tess.utF8Text
 
         detectdate(ocrResult)
-        name_edit.setText(ocrResult)
         Log.d("sys","추출완료")
     }
 
