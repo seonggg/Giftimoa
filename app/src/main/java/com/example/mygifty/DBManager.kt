@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 class DBManager(
-    context: Context?,
+    context: Context,
     name: String?,
     factory: SQLiteDatabase.CursorFactory?,
     version: Int
@@ -16,7 +16,8 @@ class DBManager(
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        TODO("Not yet implemented")
+        db!!.execSQL("DROP TABLE IF EXISTS gifticon")
+        onCreate(db)
     }
 
 }

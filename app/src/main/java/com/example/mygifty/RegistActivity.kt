@@ -1,12 +1,10 @@
 package com.example.mygifty
 
 import android.Manifest
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.AssetManager
 import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteOpenHelper
 import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -126,7 +124,7 @@ class RegistActivity : AppCompatActivity() {
     private fun loadImage() {
         val intent = Intent()
         intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
+        intent.action = Intent.ACTION_OPEN_DOCUMENT
 
         startActivityForResult(Intent.createChooser(intent, "Load Picture"), Gallery)
     }
