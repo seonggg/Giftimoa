@@ -1,6 +1,7 @@
 package com.example.mygifty
 
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -51,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(tabs, viewPager) {tab, position ->
             when(position) {
                 0 -> tab.text = "전체"
-                1 -> tab.text = "사용 완료"
+                1 -> tab.text = "사용 가능"
                 2 -> tab.text = "사용 불가"
             }
         }.attach()

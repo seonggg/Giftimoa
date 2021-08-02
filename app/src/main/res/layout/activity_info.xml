@@ -138,6 +138,11 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/text_memo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
 
     </LinearLayout>
     </ScrollView>
@@ -147,7 +152,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPoint"
-
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
         android:text="사용완료" />
 
 </LinearLayout>

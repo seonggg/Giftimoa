@@ -4,12 +4,12 @@ import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Bitmap
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
@@ -25,12 +25,14 @@ class Info : AppCompatActivity() {
     lateinit var edit_time: TextView
     lateinit var edit_place: TextView
     lateinit var edit_state: TextView
+    lateinit var text_memo: TextView
 
     var str_uri: String = ""
     var str_name: String= ""
     var str_time: String= ""
     var str_place: String= ""
     var str_state: String= ""
+    var str_memo: String= ""
 
 
 
@@ -47,6 +49,7 @@ class Info : AppCompatActivity() {
         edit_time=findViewById(R.id.edit_time)
         edit_place=findViewById(R.id.edit_place)
         edit_state=findViewById(R.id.edit_state)
+        text_memo=findViewById(R.id.text_memo)
 
         val intent = intent
         str_uri=intent.getStringExtra("intent_uri").toString()
@@ -62,6 +65,7 @@ class Info : AppCompatActivity() {
             str_time=cursor.getString(cursor.getColumnIndex("time")).toString()
             str_place=cursor.getString(cursor.getColumnIndex("place")).toString()
             str_state=cursor.getString(cursor.getColumnIndex("state")).toString()
+            str_memo=cursor.getString(cursor.getColumnIndex("memo")).toString()
         }
 
         cursor.close()
@@ -77,6 +81,7 @@ class Info : AppCompatActivity() {
         edit_time.setText(str_time)
         edit_place.setText(str_place)
         edit_state.setText(str_state)
+        text_memo.setText(str_memo)
 
     }
 
