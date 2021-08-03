@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.AssetManager
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Bitmap
 import android.net.Uri
@@ -13,14 +14,17 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.*
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import com.googlecode.tesseract.android.TessBaseAPI
 import java.io.*
 
-class RegistActivity : AppCompatActivity() {
+class EditActivity : AppCompatActivity() {
 
     //db
     lateinit var dbManager: DBManager
@@ -33,11 +37,20 @@ class RegistActivity : AppCompatActivity() {
 
     var dataUri: Uri? = null
 
-    lateinit var regist_img: ImageView
+    lateinit var edit_img: ImageView
     lateinit var name_edit: EditText
     lateinit var time_edit: EditText
     lateinit var place_edit: EditText
     lateinit var memo_edit: EditText
+
+    var str_uri: String = ""
+    var str_name: String= ""
+    var str_time: String= ""
+    var str_place: String= ""
+    var str_state: String= ""
+    var str_memo: String= ""
+
+    var origin_uri:String =""
 
     val Gallery = 1
 
@@ -48,23 +61,55 @@ class RegistActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_regist)
+        setContentView(R.layout.activity_edit)
 
+        //상단 바 세팅
+        setSupportActionBar(findViewById(R.id.toolbar_edit))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        edit_img = findViewById(R.id.edit_img)
         name_edit = findViewById(R.id.name_edit)
         time_edit = findViewById(R.id.time_edit)
         place_edit = findViewById(R.id.place_edit)
         memo_edit = findViewById(R.id.memo_edit)
 
+        val intent = intent
+        str_uri=intent.getStringExtra("intent_uri").toString()
+        origin_uri = str_uri
+
+        dbManager = DBManager(this,"gifticon",null,1)
+        sqlitedb = dbManager.readableDatabase
+
+        var cursor: Cursor
+        cursor = sqlitedb.rawQuery("SELECT * FROM gifticon WHERE uri = '" +str_uri +"';", null)
+
+        if(cursor.moveToNext()){
+            str_name=cursor.getString(cursor.getColumnIndex("name")).toString()
+            str_time=cursor.getString(cursor.getColumnIndex("time")).toString()
+            str_place=cursor.getString(cursor.getColumnIndex("place")).toString()
+            str_state=cursor.getString(cursor.getColumnIndex("state")).toString()
+            str_memo=cursor.getString(cursor.getColumnIndex("memo")).toString()
+        }
+
+        cursor.close()
+        sqlitedb.close()
+        dbManager.close()
+
+        var bitmap: Bitmap =
+            MediaStore.Images.Media.getBitmap(this.contentResolver, str_uri.toUri())
+
+        edit_img.setImageBitmap(bitmap)
+
+        name_edit.setText(str_name)
+        time_edit.setText(str_time)
+        place_edit.setText(str_place)
+        memo_edit.setText(str_memo)
+
         //db
         dbManager = DBManager(this, "gifticon", null, 1)
 
-        //상단 바 세팅
-        setSupportActionBar(findViewById(R.id.toolbar))
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         //이미지 추가하기
-        regist_img = findViewById(R.id.regist_img)
-        regist_img.setOnClickListener({
+        edit_img.setOnClickListener({
             //이미지 업로드 코드
             //권한이 부여되었는지 확인
             if (ContextCompat.checkSelfPermission(
@@ -85,7 +130,7 @@ class RegistActivity : AppCompatActivity() {
                     dlg.setMessage("사진 정보를 얻기 위해서는 외부 저장소 권한이 필수로 필요합니다.")
                     dlg.setPositiveButton("확인") { dialog, which ->
                         ActivityCompat.requestPermissions(
-                            this@RegistActivity,
+                            this@EditActivity,
                             arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
                             REQUEST_READ_EXTERNAL_STORAGE
                         )
@@ -138,7 +183,7 @@ class RegistActivity : AppCompatActivity() {
                 try {
                     var bitmap: Bitmap =
                         MediaStore.Images.Media.getBitmap(this.contentResolver, dataUri)
-                    regist_img.setImageBitmap(bitmap)
+                    edit_img.setImageBitmap(bitmap)
                     processImage(bitmap)
                 } catch (e: Exception) {
                     Toast.makeText(this, "$e", Toast.LENGTH_SHORT).show()
@@ -163,17 +208,24 @@ class RegistActivity : AppCompatActivity() {
             //등록버튼 누르기
             R.id.action_regist -> {
 
-                var str_uri: String = dataUri.toString()
+                var str_uri: String
+                if(dataUri==null){
+                    str_uri=origin_uri
+                }else{
+                    str_uri=dataUri.toString()
+                }
                 var str_name: String = name_edit.text.toString()
                 var str_time: String = time_edit.text.toString()
                 var str_place: String = place_edit.text.toString()
                 var str_memo: String = memo_edit.text.toString()
-                var str_state: String = "사용 가능"
-
                 sqlitedb = dbManager.writableDatabase
                 Log.d("sys", "db시작")
-                sqlitedb.execSQL("INSERT INTO gifticon VALUES ('" + str_uri + "', '" + str_name + "', '" + str_time + "', '" + str_place + "', '" + str_memo + "', '" + str_state + "')")
-                Log.d("sys", "삽입")
+                sqlitedb.execSQL("UPDATE gifticon SET uri = '"+str_uri+ "' WHERE uri = '" +origin_uri+"';")
+                sqlitedb.execSQL("UPDATE gifticon SET name = '"+str_name+ "' WHERE uri = '" +origin_uri+"';")
+                sqlitedb.execSQL("UPDATE gifticon SET time = '"+str_time+ "' WHERE uri = '" +origin_uri+"';")
+                sqlitedb.execSQL("UPDATE gifticon SET place = '"+str_place+ "' WHERE uri = '" +origin_uri+"';")
+                sqlitedb.execSQL("UPDATE gifticon SET memo = '"+str_memo+ "' WHERE uri = '" +origin_uri+"';")
+                Log.d("sys", "수정")
                 sqlitedb.close()
 
                 val intent = Intent(this, Info::class.java)

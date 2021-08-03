@@ -11,14 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyGifty">
-        <activity android:name=".Info"
+        <activity android:name=".EditActivity"
             android:theme="@style/Theme.Regist"></activity>
         <activity
+            android:name=".Info"
+            android:theme="@style/Theme.Regist" />
+        <activity
             android:name=".RegistActivity"
-            android:theme="@style/Theme.Regist"></activity>
+            android:theme="@style/Theme.Regist" />
         <activity android:name=".MainActivity">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
