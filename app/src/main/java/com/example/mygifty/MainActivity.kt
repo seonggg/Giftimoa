@@ -1,13 +1,16 @@
 package com.example.mygifty
 
+import android.app.Application
 import android.content.Intent
-import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,11 +18,35 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnRegist : Button
     lateinit var tabs : TabLayout
 
+    //설정으로 가는 메뉴버튼
+
+
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    //설정버튼을 클릭했을때의 동작
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        val homeIntent = Intent(this, Setting::class.java)
+        startActivity(homeIntent)
+
+
+        return super.onOptionsItemSelected(item)
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        viewPager = findViewById(R.id.viewPager)
+
         btnRegist = findViewById(R.id.btnRegist)
+
 
         btnRegist.setOnClickListener({
             val intent = Intent(this, RegistActivity::class.java)

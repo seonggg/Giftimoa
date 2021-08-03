@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/drawable-v24/btn_regist.xml" value="0.14895833333333333" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/drawable-v24/editbox_border.xml" value="0.14895833333333333" />
+        <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/drawable-v24/ic_regist.xml" value="0.15052083333333333" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/drawable/arrow_chevr.xml" value="0.16574074074074074" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/drawable/ellipse_1.xml" value="0.1" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/drawable/ellipse_2.xml" value="0.1" />
@@ -23,13 +24,16 @@
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/layout/activity_info.xml" value="0.4" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/layout/activity_regist.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/layout/activity_setting.xml" value="0.6" />
+        <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/layout/activity_setting_time.xml" value="0.2390625" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/layout/fragment_first.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/layout/fragment_second.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/layout/fragment_third.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/layout/setting.xml" value="0.152" />
+        <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/layout/setting.xml" value="0.176" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/layout/settingTime.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/layout/settingtime.xml" value="0.1328125" />
+        <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/layout/settingtime.xml" value="0.264" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/menu/info_menu.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/menu/main_menu.xml" value="0.2" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/menu/regist_menu.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14895833333333333" />
       </map>

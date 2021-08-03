@@ -1,6 +1,7 @@
 package com.example.mygifty
 
 import android.Manifest
+import android.app.Application
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.AssetManager
@@ -19,6 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.googlecode.tesseract.android.TessBaseAPI
 import java.io.*
+
 
 class RegistActivity : AppCompatActivity() {
 

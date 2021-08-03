@@ -1,8 +1,4 @@
-package com.example.mygifty.fragment
-
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.example.mygifty.R
+package com.example.mygifty
 
 import android.app.AlarmManager
 import android.app.NotificationManager
@@ -10,28 +6,30 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.TimePicker
 import android.widget.Toast
-import androidx.core.app.NotificationCompat
+import androidx.appcompat.app.AppCompatActivity
+import com.example.mygifty.fragment.AlarmRecevier
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import android.view.View as View
+import android.widget.TimePicker
+
 
 class SettingTime : AppCompatActivity() {
-
     private var alarmManager: AlarmManager? = null
     private var mCalender: GregorianCalendar? = null
     private var notificationManager: NotificationManager? = null
-    var builder: NotificationCompat.Builder? = null
 
     //기프티콘의 등록으로 부터 받아올 날짜
-    var month = "07"  //달
-    var date = "31"   //일
+    var month = "08"  //달
+    var date = "03"   //일
 
     var year = "2021"
+
     var hour: Int = 0
     var hour_24: Int = 0
     var minute: Int = 0
@@ -40,7 +38,7 @@ class SettingTime : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_setting_time)
         //노티피케이션 매니저
         notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         //알람 매니저
@@ -49,27 +47,27 @@ class SettingTime : AppCompatActivity() {
         Log.v("HelloAlarmActivity", mCalender!!.time.toString())
 
         //핔커 설정
-        val picker = findViewById<View>(R.id.timePicker) as TimePicker
-        picker.setOnTimeChangedListener { view, hourOfDay, minute ->
+        val picker = findViewById<View>(R.id.timePicker) as TimePicker?
+        picker?.setOnTimeChangedListener { view, hourOfDay, minute ->
             val strTime = "$hourOfDay : $minute"
-            //Toast.makeText(this@MainActivity, strTime, Toast.LENGTH_SHORT).show()
+
         }
-        picker.setIs24HourView(true)
+        picker?.setIs24HourView(true)
 
-        val button = findViewById<View>(R.id.Alarmbutton) as Button
+        val button = findViewById<View>(R.id.Alarmbutton) as Button?
 
-        button.setOnClickListener {
+        button?.setOnClickListener {
             //픽커 에서 시간 받기
             if (Build.VERSION.SDK_INT >= 23) {
 
-                hour_24 = picker.hour
-                minute = picker.minute
-                Toast.makeText(applicationContext, "[" + hour_24 + ":" + minute + "를 hour_24와 minute에 넣었습니다]", Toast.LENGTH_SHORT).show()
+                hour_24 = picker!!.hour
+                minute = picker!!.minute
+                //Toast.makeText(applicationContext, "[" + hour_24 + ":" + minute + "를 hour_24와 minute에 넣었습니다]", Toast.LENGTH_SHORT).show()
                 //Toast.makeText(applicationContext, "["+hour_24+":"+minute+"]", Toast.LENGTH_SHORT).show()
             } else {
 
-                hour_24 = picker.currentHour
-                minute = picker.currentMinute
+                hour_24 = picker!!.currentHour
+                minute = picker!!.currentMinute
             }
             if (hour_24 > 12) {
                 am_pm = "PM"
@@ -78,7 +76,7 @@ class SettingTime : AppCompatActivity() {
                 hour = hour_24
                 am_pm = "AM"
             }
-            Toast.makeText(applicationContext, "[" + picker.hour + ":" + picker.minute + " hour와 minute]", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(applicationContext, "[" + picker?.hour + ":" + picker?.minute + " hour와 minute]", Toast.LENGTH_SHORT).show()
 
             try {
                 setAlarm()
@@ -113,18 +111,25 @@ class SettingTime : AppCompatActivity() {
         }
 
         val calendar = Calendar.getInstance()
-        var time1=datetime
+        var time1:Long=1164925597950
         calendar.time = datetime
+
         //calendar.timeInMillis=calendar.time
-        Toast.makeText(applicationContext, "["+calendar.timeInMillis+"]", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(applicationContext, "["+calendar.timeInMillis+"]", Toast.LENGTH_SHORT).show()
+
 
         alarmManager?.set(   // 5
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,
             pendingIntent
         )
+
+
         //alarmManager!![AlarmManager.RTC, calendar.timeInMillis] = pendingIntent
+
 
     }
 
+
 }
+

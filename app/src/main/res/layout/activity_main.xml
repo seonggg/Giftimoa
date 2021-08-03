@@ -65,7 +65,7 @@
             android:paddingRight="20dp"
             android:text="등록" />
 
-    </LinearLayout>
 
+    </LinearLayout>
 
 </LinearLayout>
