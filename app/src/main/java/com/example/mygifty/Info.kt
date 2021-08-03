@@ -10,6 +10,7 @@ import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
@@ -21,11 +22,16 @@ class Info : AppCompatActivity() {
     lateinit var sqlitedb: SQLiteDatabase
 
     lateinit var info_img: ImageView
-    lateinit var edit_name: TextView
-    lateinit var edit_time: TextView
-    lateinit var edit_place: TextView
-    lateinit var edit_state: TextView
-    lateinit var text_memo: TextView
+    lateinit var tv_name: TextView
+    lateinit var tv_time: TextView
+    lateinit var tv_place: TextView
+    lateinit var tv_state: TextView
+    lateinit var tv_memo: TextView
+
+    lateinit var edit_name: EditText
+    lateinit var edit_time: EditText
+    lateinit var edit_place: EditText
+    lateinit var edit_memo: EditText
 
     var str_uri: String = ""
     var str_name: String= ""
@@ -45,11 +51,11 @@ class Info : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         info_img=findViewById(R.id.info_img)
-        edit_name=findViewById(R.id.edit_name)
-        edit_time=findViewById(R.id.edit_time)
-        edit_place=findViewById(R.id.edit_place)
-        edit_state=findViewById(R.id.edit_state)
-        text_memo=findViewById(R.id.text_memo)
+        tv_name=findViewById(R.id.tv_name)
+        tv_time=findViewById(R.id.tv_time)
+        tv_place=findViewById(R.id.tv_place)
+        tv_state=findViewById(R.id.tv_state)
+        tv_memo=findViewById(R.id.tv_memo)
 
         val intent = intent
         str_uri=intent.getStringExtra("intent_uri").toString()
@@ -77,11 +83,11 @@ class Info : AppCompatActivity() {
 
         info_img.setImageBitmap(bitmap)
 
-        edit_name.setText(str_name)
-        edit_time.setText(str_time)
-        edit_place.setText(str_place)
-        edit_state.setText(str_state)
-        text_memo.setText(str_memo)
+        tv_name.setText(str_name)
+        tv_time.setText(str_time)
+        tv_place.setText(str_place)
+        tv_state.setText(str_state)
+        tv_memo.setText(str_memo)
 
     }
 
@@ -103,6 +109,9 @@ class Info : AppCompatActivity() {
             }
             R.id.action_edit -> {
                 //수정 구현해야함
+                val intent = Intent(this, EditActivity::class.java)
+                intent.putExtra("intent_uri", str_uri)
+                startActivity(intent)
                 return true
             }
             R.id.action_delete -> {
