@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         btnRegist = findViewById(R.id.btnRegist)
 
+        //등록 버튼
         btnRegist.setOnClickListener({
             val intent = Intent(this, RegistActivity::class.java)
             startActivity(intent)
@@ -75,7 +76,7 @@ class MainActivity : AppCompatActivity() {
             when(position) {
                 0 -> tab.text = "전체"
                 1 -> tab.text = "사용 가능"
-                2 -> tab.text = "사용 불가"
+                2 -> tab.text = "사용 완료"
             }
         }.attach()
     }

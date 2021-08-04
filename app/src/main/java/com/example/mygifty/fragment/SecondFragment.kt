@@ -49,16 +49,15 @@ class SecondFragment : Fragment() {
 
         try {
             displayList()
+            gifticon_list.setOnItemClickListener { parent: AdapterView<*>, view: View, position: Int, id: Long ->
+                val item = parent.getItemAtPosition(position) as ListViewItem
+                val intent = Intent(ct, Info::class.java)
+                intent.putExtra("intent_uri", item.img)
+                startActivity(intent)
+            }
 
         } catch (e: FileNotFoundException) {
             Toast.makeText(ct, "등록된 기프티콘이 없습니다.", Toast.LENGTH_SHORT).show()
-        }
-
-        gifticon_list.setOnItemClickListener { parent: AdapterView<*>, view: View, position: Int, id: Long ->
-            val item = parent.getItemAtPosition(position) as ListViewItem
-            val intent = Intent(ct, Info::class.java)
-            intent.putExtra("intent_uri", item.img)
-            startActivity(intent)
         }
     }
 

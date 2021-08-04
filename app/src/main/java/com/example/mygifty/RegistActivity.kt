@@ -163,7 +163,7 @@ open class RegistActivity : AppCompatActivity() {
                 finish()
                 return true
             }
-            //등록버튼 누르기
+            //등록 버튼
             R.id.action_regist -> {
 
                 var str_uri: String = dataUri.toString()
@@ -173,15 +173,21 @@ open class RegistActivity : AppCompatActivity() {
                 var str_memo: String = memo_edit.text.toString()
                 var str_state: String = "사용 가능"
 
-                sqlitedb = dbManager.writableDatabase
-                Log.d("sys", "db시작")
-                sqlitedb.execSQL("INSERT INTO gifticon VALUES ('" + str_uri + "', '" + str_name + "', '" + str_time + "', '" + str_place + "', '" + str_memo + "', '" + str_state + "')")
-                Log.d("sys", "삽입")
-                sqlitedb.close()
+                if(dataUri != null) {
+                    //DB에 등록
+                    sqlitedb = dbManager.writableDatabase
+                    Log.d("sys", "db시작")
+                    sqlitedb.execSQL("INSERT INTO gifticon VALUES ('" + str_uri + "', '" + str_name + "', '" + str_time + "', '" + str_place + "', '" + str_memo + "', '" + str_state + "')")
+                    Log.d("sys", "삽입")
+                    sqlitedb.close()
 
-                val intent = Intent(this, Info::class.java)
-                intent.putExtra("intent_uri", str_uri)
-                startActivity(intent)
+                    val intent = Intent(this, Info::class.java)
+                    intent.putExtra("intent_uri", str_uri)
+                    startActivity(intent)
+                }else{
+                    //이미지 추가 안했을 때
+                    Toast.makeText(this, "이미지를 추가해주세요.", Toast.LENGTH_LONG).show()
+                }
                 return true
             }
             else -> {

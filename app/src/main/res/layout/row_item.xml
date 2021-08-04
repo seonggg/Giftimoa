@@ -25,7 +25,7 @@
             android:id="@+id/stamp_gray"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@color/colorgray"
+            android:background="@color/colorStamp"
             android:layout_margin="10dp"
             android:adjustViewBounds="true"
             android:visibility="invisible"/>

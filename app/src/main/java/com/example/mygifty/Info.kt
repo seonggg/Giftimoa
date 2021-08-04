@@ -67,6 +67,7 @@ class Info : AppCompatActivity() {
         var cursor: Cursor
         cursor = sqlitedb.rawQuery("SELECT * FROM gifticon WHERE uri = '" +str_uri +"';", null)
 
+        //데이터 불러오기
         if(cursor.moveToNext()){
             str_name=cursor.getString(cursor.getColumnIndex("name")).toString()
             str_time=cursor.getString(cursor.getColumnIndex("time")).toString()
@@ -113,6 +114,9 @@ class Info : AppCompatActivity() {
         }
 
         //날짜 따라서 사용지나면 회색
+        dbManager = DBManager(this, "gifticon", null, 1)
+        sqlitedb = dbManager.writableDatabase
+
         val calendar = Calendar.getInstance()
         val dateFormat = SimpleDateFormat("yyyy/MM/dd")
         var datetime: Date? = null
@@ -124,7 +128,11 @@ class Info : AppCompatActivity() {
         }
         if(calendar.time>=datetime){
             btnUse.setBackgroundColor(Color.LTGRAY)
+            sqlitedb.execSQL("UPDATE gifticon SET state = '기한 만료' WHERE uri = '" + str_uri + "';")
         }
+
+        sqlitedb.close()
+        dbManager.close()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -56,8 +56,8 @@ class ListViewAdapter(val context: Context): BaseAdapter()  {
         gift_name.setText(listdata.name)
         gift_time.setText(listdata.time)
 
+        //사용 완료, 기한 만료 스탬프 표시
         if(listdata.state != "사용 가능") {
-            view.setBackgroundColor(Color.LTGRAY)
             if(listdata.state == "사용 완료"){
                 stamp_com.visibility= View.VISIBLE
                 stamp_gray.visibility= View.VISIBLE
@@ -68,12 +68,10 @@ class ListViewAdapter(val context: Context): BaseAdapter()  {
 
         }
         else {
-            view.setBackgroundColor(Color.WHITE)
             stamp_com.visibility= View.INVISIBLE
             stamp_exp.visibility= View.INVISIBLE
             stamp_gray.visibility= View.INVISIBLE
         }
-
 
         return view
     }

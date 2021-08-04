@@ -18,6 +18,9 @@
             app:title="기프티콘 등록하기">
         </androidx.appcompat.widget.Toolbar>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -105,6 +108,8 @@
             android:hint=" 메모를 하세요."/>
 
     </LinearLayout>
+
+    </ScrollView>
 
 
 </LinearLayout>
