@@ -17,6 +17,10 @@
         <activity
             android:name=".RegistActivity"
             android:theme="@style/Theme.Regist"></activity>
+        <activity
+            android:name=".EditActivity"
+            android:theme="@style/Theme.Regist"></activity>
+
         <activity android:name=".MainActivity">
 
 

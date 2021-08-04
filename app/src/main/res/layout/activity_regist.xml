@@ -28,10 +28,11 @@
         <ImageView
             android:id="@+id/regist_img"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:background="#5BEFEFEF"
+            android:src="@drawable/add_img"
+            android:adjustViewBounds="true"
             android:backgroundTint="#D3D3D3" />
 
         <TextView
@@ -49,7 +50,7 @@
             android:textColor="@color/black"
             android:background="@drawable/editbox_border"
             android:layout_marginBottom="10dp"
-            android:hint="상품명"/>
+            android:hint=" 상품명"/>
 
         <TextView
             android:id="@+id/time_name"
@@ -66,7 +67,7 @@
             android:textColor="@color/black"
             android:background="@drawable/editbox_border"
             android:layout_marginBottom="10dp"
-            android:hint="년/월/일"/>
+            android:hint=" 년/월/일"/>
 
         <TextView
             android:id="@+id/place_text"
@@ -83,7 +84,7 @@
             android:textColor="@color/black"
             android:background="@drawable/editbox_border"
             android:layout_marginBottom="10dp"
-            android:hint="교환처"/>
+            android:hint=" 교환처"/>
 
         <TextView
             android:id="@+id/memo_text"
@@ -101,7 +102,7 @@
             android:background="@drawable/editbox_border"
             android:layout_marginBottom="10dp"
             android:gravity="start"
-            android:hint="메모를 하세요."/>
+            android:hint=" 메모를 하세요."/>
 
     </LinearLayout>
 
