@@ -4,9 +4,12 @@ import android.app.AlarmManager
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,21 +20,13 @@ import android.view.View as View
 import android.widget.TimePicker
 
 
-class SettingTime : RegistActivity() {
 
 
+class SettingTime : AppCompatActivity() {
 
     private var alarmManager: AlarmManager? = null
     private var mCalender: GregorianCalendar? = null
     private var notificationManager: NotificationManager? = null
-
-    //기프티콘의 등록으로 부터 받아올 날짜
-    var month :String = "08"
-      //달
-    var date = "04"   //일
-
-    //var year = "2021"
-    var year = "2021"
 
     var hour: Int = 0
     var hour_24: Int = 0
@@ -40,6 +35,13 @@ class SettingTime : RegistActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        getSupportActionBar()?.setIcon(R.drawable.minititle)
+        getSupportActionBar()?.setDisplayUseLogoEnabled(true)
+        getSupportActionBar()?.setDisplayShowHomeEnabled(true)
+
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         setContentView(R.layout.activity_setting_time)
         //노티피케이션 매니저
@@ -72,6 +74,7 @@ class SettingTime : RegistActivity() {
                 hour_24 = picker!!.currentHour
                 minute = picker!!.currentMinute
             }
+
             if (hour_24 > 12) {
                 am_pm = "PM"
                 hour = hour_24 - 12
@@ -79,18 +82,34 @@ class SettingTime : RegistActivity() {
                 hour = hour_24
                 am_pm = "AM"
             }
+
+
             //Toast.makeText(applicationContext, "[" + picker?.hour + ":" + picker?.minute + " hour와 minute]", Toast.LENGTH_SHORT).show()
+
+
 
             try {
                 setAlarm()
 
                 //Toast.makeText(applicationContext, "[" + year + "년" + month + "월" + date + "일" + "으로 알람이 설정되었습니다!]", Toast.LENGTH_SHORT).show()}
             } catch (e: Exception) {
-                Toast.makeText(applicationContext, "[알람설정 실패]", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(applicationContext, "[알람설정 실패]", Toast.LENGTH_SHORT).show()
             }
+
+
         }
     }
 
+    //뒤로가기
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+            else->{return true }
+        }
+    }
 
     private fun setAlarm() {
         //AlarmReceiver에 값 전달
@@ -98,41 +117,45 @@ class SettingTime : RegistActivity() {
 
         val pendingIntent = PendingIntent.getBroadcast(this@SettingTime, 0, receiverIntent, 0)
 
-        val from: String = year + "-" + month + "-" + date + "-" + hour + ":" + minute + ":" + "00" // 날짜와 시간을 지정
+
+
+        Toast.makeText(applicationContext, "[알람 설정 성공]", Toast.LENGTH_SHORT).show()
+
+        var from: String =""
+
+        if(time.time1.daycount==3){
+        time.time1.time2.toLong()-3.0
+        }
+
+        if(time.time1.daycount==7){
+            time.time1.time2.toLong()-7.0
+        }
+
+        from=time.time1.time2 + "/" + hour + "/" + minute + "/" + "00" // 날짜와 시간을 지정
+
 
 
         //Toast.makeText(applicationContext, "["+from+"]", Toast.LENGTH_SHORT).show()
 
         //날짜 포맷을 바꿔주는 소스코드
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd-HH:mm:ss")
+        val dateFormat = SimpleDateFormat("yyyy/MM/dd/HH/mm/ss")
         var datetime: Date? = null
         try {
             datetime = dateFormat.parse(from)
         } catch (e: ParseException) {
-            Toast.makeText(applicationContext, "[알람설정 실패!!]", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(applicationContext, "[알람설정 실패!!]", Toast.LENGTH_SHORT).show()
             e.printStackTrace()
         }
 
         val calendar = Calendar.getInstance()
-        var time1:Long=1164925597950
+
         calendar.time = datetime
 
-        //calendar.timeInMillis=calendar.time
-        //Toast.makeText(applicationContext, "["+calendar.timeInMillis+"]", Toast.LENGTH_SHORT).show()
+        var a=calendar.getTimeInMillis()
 
-/*
-        alarmManager?.set(   // 5
-            AlarmManager.RTC_WAKEUP,
-            calendar.timeInMillis,
-            pendingIntent
-        )
+        alarmManager?.set(AlarmManager.RTC, a,pendingIntent)
 
- */
-
-        alarmManager?.set(AlarmManager.RTC, calendar.getTimeInMillis(),pendingIntent)
-
-        //alarmManager!![AlarmManager.RTC, calendar.timeInMillis] = pendingIntent
-
+        //Toast.makeText(applicationContext, "[알람설정 성공]", Toast.LENGTH_SHORT).show()
 
     }
 

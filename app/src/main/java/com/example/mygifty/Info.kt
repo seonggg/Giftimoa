@@ -1,5 +1,7 @@
 package com.example.mygifty
 
+import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
@@ -16,6 +18,8 @@ import androidx.core.net.toUri
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+
+
 
 class Info : AppCompatActivity() {
 
@@ -67,10 +71,9 @@ class Info : AppCompatActivity() {
         var cursor: Cursor
         cursor = sqlitedb.rawQuery("SELECT * FROM gifticon WHERE uri = '" +str_uri +"';", null)
 
-        //데이터 불러오기
         if(cursor.moveToNext()){
             str_name=cursor.getString(cursor.getColumnIndex("name")).toString()
-            str_time=cursor.getString(cursor.getColumnIndex("time")).toString()
+            time.time1.time2=cursor.getString(cursor.getColumnIndex("time")).toString()
             str_place=cursor.getString(cursor.getColumnIndex("place")).toString()
             str_state=cursor.getString(cursor.getColumnIndex("state")).toString()
             str_memo=cursor.getString(cursor.getColumnIndex("memo")).toString()
@@ -92,7 +95,7 @@ class Info : AppCompatActivity() {
         info_img.setImageBitmap(bitmap)
 
         tv_name.setText(str_name)
-        tv_time.setText(str_time)
+        tv_time.setText(time.time1.time2)
         tv_place.setText(str_place)
         tv_state.setText(str_state)
         tv_memo.setText(str_memo)
@@ -114,25 +117,20 @@ class Info : AppCompatActivity() {
         }
 
         //날짜 따라서 사용지나면 회색
-        dbManager = DBManager(this, "gifticon", null, 1)
-        sqlitedb = dbManager.writableDatabase
-
         val calendar = Calendar.getInstance()
         val dateFormat = SimpleDateFormat("yyyy/MM/dd")
         var datetime: Date? = null
         try {
-            datetime = dateFormat.parse(str_time)
+            datetime = dateFormat.parse(time.time1.time2)
         } catch (e: ParseException) {
             Toast.makeText(applicationContext, "[알람설정 실패!!]", Toast.LENGTH_SHORT).show()
             e.printStackTrace()
         }
         if(calendar.time>=datetime){
             btnUse.setBackgroundColor(Color.LTGRAY)
-            sqlitedb.execSQL("UPDATE gifticon SET state = '기한 만료' WHERE uri = '" + str_uri + "';")
         }
 
-        sqlitedb.close()
-        dbManager.close()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

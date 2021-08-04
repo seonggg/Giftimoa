@@ -1,5 +1,7 @@
 package com.example.mygifty
 
+import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +13,8 @@ import android.widget.ImageButton
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+
+
 
 class MainActivity : AppCompatActivity() {
 
