@@ -3,6 +3,7 @@
     <color name="colorPrimary">#FFDB1F</color>
     <color name="colorPoint">#FF981F</color>
     <color name="colorText">#66000000</color>
+    <color name="colorgray">#d3d3d3B3</color>
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>

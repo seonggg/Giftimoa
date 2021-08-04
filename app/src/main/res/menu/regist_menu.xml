@@ -4,6 +4,6 @@
     <item
         android:id="@+id/action_regist"
         android:title="등록"
-        android:icon="@drawable/ic_regist_btn"
+        android:icon="@drawable/ic_creat"
         app:showAsAction="ifRoom" />
 </menu>

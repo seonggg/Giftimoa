@@ -8,15 +8,48 @@
     android:id="@+id/layout_lin"
     android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/gift_img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:maxHeight="100dp"
-        android:maxWidth="100dp"
-        android:layout_margin="16dp"
-        android:adjustViewBounds="true"
-        tools:srcCompat="@tools:sample/avatars" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/gift_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:maxHeight="100dp"
+            android:maxWidth="100dp"
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/stamp_gray"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/colorgray"
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:id="@+id/stamp_exp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/stamp_man"
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            android:visibility="invisible"/>
+
+
+        <ImageView
+            android:id="@+id/stamp_com"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/stamp_wan"
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            android:visibility="invisible"/>
+
+    </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_const"

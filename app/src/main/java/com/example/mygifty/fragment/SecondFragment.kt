@@ -83,7 +83,8 @@ class SecondFragment : Fragment() {
             var str_name = cursor.getString(cursor.getColumnIndex("name")).toString()
             var str_time = cursor.getString(cursor.getColumnIndex("time")).toString()
             var str_place = cursor.getString(cursor.getColumnIndex("place")).toString()
-            adapter.addItemToList(str_uri,str_place,str_name,str_time)
+            var str_state = cursor.getString(cursor.getColumnIndex("state")).toString()
+            adapter.addItemToList(str_uri,str_place,str_name,str_time,str_state)
             num++
         }
         cursor.close()
