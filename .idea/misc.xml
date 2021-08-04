@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_main.xml" value="0.5150537634408602" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_regist.xml" value="0.24947916666666667" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_setting_time.xml" value="0.24947916666666667" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_slide_main.xml" value="0.11354166666666667" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_splash.xml" value="0.24947916666666667" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/layout_intro_pager_item.xml" value="0.24947916666666667" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/menu/regist_menu.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/drawable-v24/btn_regist.xml" value="0.14895833333333333" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/drawable-v24/editbox_border.xml" value="0.14895833333333333" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/drawable-v24/ic_regist.xml" value="0.15052083333333333" />
@@ -40,19 +47,14 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/MyGifty/app/src/main/res/layout/activity_edit.xml" value="0.11822916666666666" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyGifty/app/src/main/res/layout/activity_regist.xml" value="0.11822916666666666" />
         <entry key="..\:/mmm/app/src/main/res/drawable/ic_creat.xml" value="0.1638888888888889" />
-        <entry key="..\:/mmm/app/src/main/res/layout/activity_info.xml" value="0.24791666666666667" />
-        <entry key="..\:/mmm/app/src/main/res/layout/activity_main.xml" value="0.24791666666666667" />
-        <entry key="..\:/mmm/app/src/main/res/layout/activity_regist.xml" value="0.22" />
         <entry key="..\:/mmm/app/src/main/res/layout/fragment_first.xml" value="0.1" />
         <entry key="..\:/mmm/app/src/main/res/layout/fragment_third.xml" value="0.1" />
         <entry key="..\:/mmm/app/src/main/res/layout/row_item.xml" value="0.1" />
-        <entry key="..\:/mmm/app/src/main/res/menu/info_menu.xml" value="0.24791666666666667" />
-        <entry key="..\:/mmm/app/src/main/res/menu/main_menu.xml" value="0.24791666666666667" />
         <entry key="..\:/mmm/app/src/main/res/menu/regist_menu.xml" value="0.15648148148148147" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

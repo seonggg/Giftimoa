@@ -52,18 +52,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Button
+        <ImageButton
             android:id="@+id/btnRegist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="85dp"
+            android:layout_height="52dp"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/btn_regist"
-            android:backgroundTint="@color/colorPoint"
+            android:background="@drawable/ic_regist_btn"
             android:drawableLeft="@drawable/ic_regist"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="등록" />
+            android:text="등록"
+            tools:ignore="SpeakableTextPresentCheck" />
 
 
     </LinearLayout>

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -14,7 +15,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewPager : ViewPager2
-    lateinit var btnRegist : Button
+    lateinit var btnRegist : ImageButton
     lateinit var tabs : TabLayout
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         getSupportActionBar()?.setDisplayUseLogoEnabled(true)
         getSupportActionBar()?.setDisplayShowHomeEnabled(true)
 
-        btnRegist = findViewById(R.id.btnRegist)
+        btnRegist = findViewById<ImageButton>(R.id.btnRegist)
 
         //등록 버튼
         btnRegist.setOnClickListener({
