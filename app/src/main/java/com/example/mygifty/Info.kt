@@ -4,12 +4,14 @@ import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Bitmap
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -28,10 +30,7 @@ class Info : AppCompatActivity() {
     lateinit var tv_state: TextView
     lateinit var tv_memo: TextView
 
-    lateinit var edit_name: EditText
-    lateinit var edit_time: EditText
-    lateinit var edit_place: EditText
-    lateinit var edit_memo: EditText
+    lateinit var btnUse: Button
 
     var str_uri: String = ""
     var str_name: String= ""
@@ -57,6 +56,8 @@ class Info : AppCompatActivity() {
         tv_state=findViewById(R.id.tv_state)
         tv_memo=findViewById(R.id.tv_memo)
 
+        btnUse=findViewById(R.id.btnUse)
+
         val intent = intent
         str_uri=intent.getStringExtra("intent_uri").toString()
 
@@ -74,6 +75,12 @@ class Info : AppCompatActivity() {
             str_memo=cursor.getString(cursor.getColumnIndex("memo")).toString()
         }
 
+        var state_chk : Int = 1 //사용 가능
+
+        if(str_state != "사용 가능"){
+            state_chk = 0
+        }
+
         cursor.close()
         sqlitedb.close()
         dbManager.close()
@@ -89,6 +96,21 @@ class Info : AppCompatActivity() {
         tv_state.setText(str_state)
         tv_memo.setText(str_memo)
 
+
+        if(state_chk == 1) { //사용 가능이면 버튼 활성화
+            btnUse.setOnClickListener {
+                dbManager = DBManager(this, "gifticon", null, 1)
+                sqlitedb = dbManager.writableDatabase
+
+                sqlitedb.execSQL("UPDATE gifticon SET state = '사용 완료' WHERE uri = '" + str_uri + "';")
+                sqlitedb.close()
+                dbManager.close()
+            }
+        }
+        else{ //사용 불가면, 버튼 비활성화
+            //버튼 색 변경
+            btnUse.setBackgroundColor(Color.LTGRAY)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

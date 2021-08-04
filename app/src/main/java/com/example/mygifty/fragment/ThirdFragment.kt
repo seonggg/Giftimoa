@@ -1,33 +1,30 @@
 package com.example.mygifty.fragment
 
+import android.content.Context
+import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.mygifty.R
+import android.widget.*
+import androidx.fragment.app.Fragment
+import com.example.mygifty.*
+import java.io.FileNotFoundException
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ThirdFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ThirdFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    lateinit var gifticon_list: ListView
+
+    lateinit var ct: Context
+    lateinit var str_uri : String
+
+    var list : ArrayList<Any>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -35,26 +32,66 @@ class ThirdFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_third, container, false)
+        var v: View = inflater.inflate(R.layout.fragment_first, container, false)
+        //ct = container!!.getContext()
+        gifticon_list = v.findViewById(R.id.gifticon_list)
+
+        return v
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ThirdFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ThirdFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        ct = context
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        try {
+            displayList()
+
+        } catch (e: FileNotFoundException) {
+            Toast.makeText(ct, "등록된 기프티콘이 없습니다.", Toast.LENGTH_SHORT).show()
+        }
+
+        gifticon_list.setOnItemClickListener { parent: AdapterView<*>, view: View, position: Int, id: Long ->
+            val item = parent.getItemAtPosition(position) as ListViewItem
+            val intent = Intent(ct, Info::class.java)
+            intent.putExtra("intent_uri", item.img)
+            startActivity(intent)
+        }
+    }
+
+    fun displayList() {
+        //Dbhelper의 읽기모드 객체를 가져와 SQLiteDatabase에 담아 사용준비
+        lateinit var dbManager: DBManager
+        lateinit var sqlitedb: SQLiteDatabase
+
+        dbManager = DBManager(ct, "gifticon", null, 1)
+        sqlitedb = dbManager.readableDatabase
+
+        //Cursor라는 그릇에 목록을 담아주기
+        val cursor = sqlitedb.rawQuery("SELECT * FROM gifticon WHERE state = '사용 완료' OR state = '기한 만료'", null)
+
+        //리스트뷰에 목록 채워주는 도구인 adapter준비
+        val adapter = ListViewAdapter(ct)
+
+        //목록의 개수만큼 순회하여 adapter에 있는 list배열에 add
+        var num: Int = 0
+        while (cursor.moveToNext()) {
+            str_uri = cursor.getString(cursor.getColumnIndex("uri")).toString()
+            var str_name = cursor.getString(cursor.getColumnIndex("name")).toString()
+            var str_time = cursor.getString(cursor.getColumnIndex("time")).toString()
+            var str_place = cursor.getString(cursor.getColumnIndex("place")).toString()
+            adapter.addItemToList(str_uri,str_place,str_name,str_time)
+            num++
+        }
+        cursor.close()
+        sqlitedb.close()
+        dbManager.close()
+
+        //리스트뷰의 어댑터 대상을 여태 설계한 adapter로 설정
+        gifticon_list.setAdapter(adapter)
+
     }
 }

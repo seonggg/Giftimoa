@@ -4,16 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/row_itemback"
+    android:id="@+id/layout_lin"
     android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/imageView_thumb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/gift_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
         android:layout_margin="16dp"
+        android:adjustViewBounds="true"
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_const"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -24,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"
+            android:textSize="12sp"
             android:text="파리바게뜨"
             android:textColor="@color/colorText"
             app:layout_constraintBottom_toTopOf="@+id/gift_name"
@@ -34,7 +41,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="15sp"
             android:text="2,000원"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +53,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
+            android:textSize="12sp"
             android:text="2021.07.23"
             android:textColor="@color/colorText"
             app:layout_constraintStart_toStartOf="parent"

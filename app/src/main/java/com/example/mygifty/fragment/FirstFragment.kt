@@ -1,44 +1,26 @@
 package com.example.mygifty.fragment
 
-import android.Manifest
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import android.graphics.Bitmap
 import android.os.Bundle
-import android.provider.MediaStore
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
-import androidx.core.view.marginBottom
-import androidx.core.view.marginRight
-import com.example.mygifty.DBManager
-import com.example.mygifty.Info
-import com.example.mygifty.R
+import androidx.fragment.app.Fragment
+import com.example.mygifty.*
 import java.io.FileNotFoundException
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FirstFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FirstFragment : Fragment() {
 
-    lateinit var dbManager: DBManager
-    lateinit var sqlitedb: SQLiteDatabase
-    lateinit var gifticon_list: LinearLayout
+    lateinit var gifticon_list: ListView
 
     lateinit var ct: Context
+    lateinit var str_uri : String
+
+    var list : ArrayList<Any>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +35,7 @@ class FirstFragment : Fragment() {
         var v: View = inflater.inflate(R.layout.fragment_first, container, false)
         //ct = container!!.getContext()
         gifticon_list = v.findViewById(R.id.gifticon_list)
+
         return v
     }
 
@@ -64,70 +47,51 @@ class FirstFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-            dbManager = DBManager(ct, "gifticon", null, 1)
-            sqlitedb = dbManager.readableDatabase
-            var cursor: Cursor
-            try {
-                cursor = sqlitedb.rawQuery("SELECT * FROM gifticon;", null)
-                var num: Int = 0
-                while (cursor.moveToNext()) {
-                    var str_uri = cursor.getString(cursor.getColumnIndex("uri")).toString()
-                    var str_name = cursor.getString(cursor.getColumnIndex("name")).toString()
-                    var str_time = cursor.getString(cursor.getColumnIndex("time")).toString()
-                    var str_place = cursor.getString(cursor.getColumnIndex("place")).toString()
+        try {
+            displayList()
 
-                    var layout_item: LinearLayout = LinearLayout(ct)
-                    layout_item.orientation = LinearLayout.HORIZONTAL
-                    //layout_item.setPadding
-                    layout_item.id = num
-                    layout_item.setTag(str_uri)
-
-                    var ivUri: ImageView = ImageView(ct)
-                    var bitmap: Bitmap =
-                        MediaStore.Images.Media.getBitmap(ct.contentResolver, str_uri.toUri())
-                    ivUri.setImageBitmap(bitmap)
-                    ivUri.setPadding(10, 10, 10, 10)
-                    layout_item.addView(ivUri)
-
-                    var layout_in: LinearLayout = LinearLayout(ct)
-                    layout_in.orientation = LinearLayout.VERTICAL
-                    layout_item.addView(layout_in)
-
-                    var tvPlace: TextView = TextView(ct)
-                    tvPlace.text = str_place
-                    tvPlace.isSingleLine = true
-                    layout_in.addView(tvPlace)
-
-                    var tvName: TextView = TextView(ct)
-                    tvName.text = str_name
-                    tvPlace.isSingleLine = true
-                    layout_in.addView(tvName)
-
-                    var tvTime: TextView = TextView(ct)
-                    tvTime.text = str_time
-                    layout_in.addView(tvTime)
-                    layout_item.setOnClickListener {
-                        val intent = Intent(ct, Info::class.java)
-                        intent.putExtra("intent_uri", str_uri)
-                        startActivity(intent)
-                    }
-                    gifticon_list.addView(layout_item)
-                    num++
-                }
-                cursor.close()
-                sqlitedb.close()
-                dbManager.close()
-            } catch (e: FileNotFoundException) {
-                Toast.makeText(ct, "등록된 기프티콘이 없습니다.", Toast.LENGTH_SHORT).show()
-//            var layout_item:LinearLayout = LinearLayout(ct)
-//            layout_item.orientation=LinearLayout.HORIZONTAL
-//            var tvNone:TextView = TextView(ct)
-//            tvNone.text="등록된 기프티콘이 없습니다."
-//            tvNone.gravity=TextView.TEXT_ALIGNMENT_CENTER
-//            layout_item.addView(tvNone)
-            }
-        catch (e: SecurityException) {
-            Toast.makeText(ct, "$e", Toast.LENGTH_SHORT).show()
+        } catch (e: FileNotFoundException) {
+            Toast.makeText(ct, "등록된 기프티콘이 없습니다.", Toast.LENGTH_SHORT).show()
         }
+
+        gifticon_list.setOnItemClickListener { parent: AdapterView<*>, view: View, position: Int, id: Long ->
+            val item = parent.getItemAtPosition(position) as ListViewItem
+            val intent = Intent(ct, Info::class.java)
+            intent.putExtra("intent_uri", item.img)
+            startActivity(intent)
+        }
+    }
+
+    fun displayList() {
+        //Dbhelper의 읽기모드 객체를 가져와 SQLiteDatabase에 담아 사용준비
+        lateinit var dbManager: DBManager
+        lateinit var sqlitedb: SQLiteDatabase
+
+        dbManager = DBManager(ct, "gifticon", null, 1)
+        sqlitedb = dbManager.readableDatabase
+
+        //Cursor라는 그릇에 목록을 담아주기
+        val cursor = sqlitedb.rawQuery("SELECT * FROM gifticon", null)
+
+        //리스트뷰에 목록 채워주는 도구인 adapter준비
+        val adapter = ListViewAdapter(ct)
+
+        //목록의 개수만큼 순회하여 adapter에 있는 list배열에 add
+        var num: Int = 0
+        while (cursor.moveToNext()) {
+            str_uri = cursor.getString(cursor.getColumnIndex("uri")).toString()
+            var str_name = cursor.getString(cursor.getColumnIndex("name")).toString()
+            var str_time = cursor.getString(cursor.getColumnIndex("time")).toString()
+            var str_place = cursor.getString(cursor.getColumnIndex("place")).toString()
+            adapter.addItemToList(str_uri,str_place,str_name,str_time)
+            num++
+        }
+        cursor.close()
+        sqlitedb.close()
+        dbManager.close()
+
+        //리스트뷰의 어댑터 대상을 여태 설계한 adapter로 설정
+        gifticon_list.setAdapter(adapter)
+
     }
 }
