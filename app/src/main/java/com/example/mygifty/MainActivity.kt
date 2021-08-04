@@ -4,6 +4,8 @@ import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -14,6 +16,22 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewPager : ViewPager2
     lateinit var btnRegist : Button
     lateinit var tabs : TabLayout
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    //설정버튼을 클릭했을때의 동작
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        val homeIntent = Intent(this, Setting::class.java)
+        startActivity(homeIntent)
+
+
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
