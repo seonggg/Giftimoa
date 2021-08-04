@@ -19,10 +19,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        getSupportActionBar()?.setIcon(R.drawable.minititle);
-        getSupportActionBar()?.setDisplayUseLogoEnabled(true);
-        getSupportActionBar()?.setDisplayShowHomeEnabled(true);
-
         btnRegist = findViewById(R.id.btnRegist)
 
         btnRegist.setOnClickListener({

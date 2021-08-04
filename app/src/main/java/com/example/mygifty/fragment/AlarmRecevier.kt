@@ -8,9 +8,11 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.example.mygifty.MainActivity
 import com.example.mygifty.R
+
 
 
 class AlarmRecevier : BroadcastReceiver() {
@@ -43,6 +45,7 @@ class AlarmRecevier : BroadcastReceiver() {
         builder!!.setContentIntent(pendingIntent)
         val notification = builder!!.build()
         manager!!.notify(1, notification)
+
     }
 
     companion object {
