@@ -38,7 +38,7 @@
         <activity
             android:name=".SettingTime"
             android:theme="@style/Theme.MyGifty"></activity>
-        <receiver android:name=".fragment.AlarmRecevier"
+        <receiver android:name=".AlarmRecevier"
             android:enabled="true"
             android:exported="false">
             <intent-filter>

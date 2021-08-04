@@ -22,7 +22,8 @@ import com.googlecode.tesseract.android.TessBaseAPI
 import java.io.*
 
 
-class RegistActivity : AppCompatActivity() {
+
+open class RegistActivity : AppCompatActivity() {
 
     //db
     lateinit var dbManager: DBManager
@@ -337,5 +338,16 @@ class RegistActivity : AppCompatActivity() {
             time_edit.getText().clear()
         }
         Toast.makeText(this, "빈칸을 입력해주세요.", Toast.LENGTH_SHORT).show()
+    }
+
+
+    fun year(): String {
+        return date_yy
+    }
+    fun month(): String {
+        return date_mm
+    }
+    fun day(): String {
+        return date_dd
     }
 }

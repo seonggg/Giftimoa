@@ -11,11 +11,11 @@ import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.core.net.toUri
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Info : AppCompatActivity() {
 
@@ -109,6 +109,20 @@ class Info : AppCompatActivity() {
         }
         else{ //사용 불가면, 버튼 비활성화
             //버튼 색 변경
+            btnUse.setBackgroundColor(Color.LTGRAY)
+        }
+
+        //날짜 따라서 사용지나면 회색
+        val calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat("yyyy/MM/dd")
+        var datetime: Date? = null
+        try {
+            datetime = dateFormat.parse(str_time)
+        } catch (e: ParseException) {
+            Toast.makeText(applicationContext, "[알람설정 실패!!]", Toast.LENGTH_SHORT).show()
+            e.printStackTrace()
+        }
+        if(calendar.time>=datetime){
             btnUse.setBackgroundColor(Color.LTGRAY)
         }
     }

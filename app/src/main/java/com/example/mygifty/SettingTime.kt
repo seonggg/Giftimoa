@@ -3,7 +3,6 @@ package com.example.mygifty
 import android.app.AlarmManager
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -11,7 +10,6 @@ import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mygifty.fragment.AlarmRecevier
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -19,15 +17,20 @@ import android.view.View as View
 import android.widget.TimePicker
 
 
-class SettingTime : AppCompatActivity() {
+class SettingTime : RegistActivity() {
+
+
+
     private var alarmManager: AlarmManager? = null
     private var mCalender: GregorianCalendar? = null
     private var notificationManager: NotificationManager? = null
 
     //기프티콘의 등록으로 부터 받아올 날짜
-    var month = "08"  //달
-    var date = "03"   //일
+    var month :String = "08"
+      //달
+    var date = "04"   //일
 
+    //var year = "2021"
     var year = "2021"
 
     var hour: Int = 0
@@ -117,13 +120,16 @@ class SettingTime : AppCompatActivity() {
         //calendar.timeInMillis=calendar.time
         //Toast.makeText(applicationContext, "["+calendar.timeInMillis+"]", Toast.LENGTH_SHORT).show()
 
-
+/*
         alarmManager?.set(   // 5
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,
             pendingIntent
         )
 
+ */
+
+        alarmManager?.set(AlarmManager.RTC, calendar.getTimeInMillis(),pendingIntent)
 
         //alarmManager!![AlarmManager.RTC, calendar.timeInMillis] = pendingIntent
 

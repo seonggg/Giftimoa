@@ -1,4 +1,4 @@
-package com.example.mygifty.fragment
+package com.example.mygifty
 
 import android.app.AlarmManager
 import android.app.NotificationChannel
@@ -8,11 +8,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.widget.Toast
 import androidx.core.app.NotificationCompat
-import com.example.mygifty.MainActivity
-import com.example.mygifty.R
-
 
 
 class AlarmRecevier : BroadcastReceiver() {
@@ -37,7 +33,7 @@ class AlarmRecevier : BroadcastReceiver() {
         val pendingIntent = PendingIntent.getActivity(context, 101, intent2, PendingIntent.FLAG_UPDATE_CURRENT)
 
         //알림창 제목
-        builder!!.setContentTitle("알람")
+        builder!!.setContentTitle("기한 만료 전에 기프티콘을 사용해주세요!")
         //알림창 아이콘
         builder!!.setSmallIcon(R.mipmap.push)
         //알림창 터치시 자동 삭제
