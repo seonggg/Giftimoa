@@ -14,8 +14,7 @@
         android:background="@color/white"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="@color/black"
-        app:title="기프티콘 수정">
+        app:titleTextColor="@color/black">
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView

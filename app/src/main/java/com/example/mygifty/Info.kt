@@ -54,6 +54,7 @@ class Info : AppCompatActivity() {
         //상단 바 세팅
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        getSupportActionBar()?.setTitle("")
 
         info_img=findViewById(R.id.info_img)
         tv_name=findViewById(R.id.tv_name)

@@ -64,6 +64,7 @@ open class RegistActivity : AppCompatActivity() {
         //상단 바 세팅
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        getSupportActionBar()?.setTitle("기프티콘 등록")
 
         //이미지 추가하기
         regist_img = findViewById(R.id.regist_img)

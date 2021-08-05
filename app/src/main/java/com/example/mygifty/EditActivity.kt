@@ -66,6 +66,7 @@ class EditActivity : AppCompatActivity() {
         //상단 바 세팅
         setSupportActionBar(findViewById(R.id.toolbar_edit))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        getSupportActionBar()?.setTitle("기프티콘 수정")
 
         edit_img = findViewById(R.id.edit_img)
         name_edit = findViewById(R.id.name_edit)

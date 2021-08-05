@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         getSupportActionBar()?.setIcon(R.drawable.minititle)
         getSupportActionBar()?.setDisplayUseLogoEnabled(true)
         getSupportActionBar()?.setDisplayShowHomeEnabled(true)
+        getSupportActionBar()?.setTitle("")
 
         btnRegist = findViewById<ImageButton>(R.id.btnRegist)
 
