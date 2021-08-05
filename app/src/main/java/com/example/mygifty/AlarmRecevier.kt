@@ -35,7 +35,7 @@ class AlarmRecevier : BroadcastReceiver() {
         //알림창 제목
         builder!!.setContentTitle("기한 만료 전에 기프티콘을 사용해주세요!")
         //알림창 아이콘
-        builder!!.setSmallIcon(R.mipmap.push)
+        builder!!.setSmallIcon(R.mipmap.icon_min)
         //알림창 터치시 자동 삭제
         builder!!.setAutoCancel(true)
         builder!!.setContentIntent(pendingIntent)
