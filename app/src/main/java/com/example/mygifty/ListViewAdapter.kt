@@ -25,7 +25,7 @@ class ListViewAdapter(val context: Context): BaseAdapter()  {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        /* LayoutInflater는 item을 Adapter에서 사용할 View로 부풀려주는(inflate) 역할을 한다. */
+        //LayoutInflater는 item을 Adapter에서 사용할 View로 부풀려주는(inflate) 역할
         var view =convertView
         val context = parent!!.context
 
@@ -34,7 +34,7 @@ class ListViewAdapter(val context: Context): BaseAdapter()  {
             view = vi.inflate(com.example.mygifty.R.layout.row_item, parent, false)
         }
 
-        /* 위에서 생성된 view를 row_item.xml 파일의 각 View와 연결하는 과정이다. */
+        //위에서 생성된 view를 row_item.xml 파일의 각 View와 연결
         val gift_img = view?.findViewById(com.example.mygifty.R.id.gift_img) as ImageView
         val gift_place = view?.findViewById(com.example.mygifty.R.id.gift_place) as TextView
         val gift_name = view?.findViewById(com.example.mygifty.R.id.gift_name) as TextView
@@ -76,7 +76,7 @@ class ListViewAdapter(val context: Context): BaseAdapter()  {
         return view
     }
 
-        //ArrayList로 선언된 list 변수에 목록을 채워주기 위함 다른방시으로 구현해도 됨
+        //ArrayList로 선언된 list 변수에 목록을 채우기
         fun addItemToList(img: String, place: String, name: String, time: String, state: String) {
             var listdata = ListViewItem(img, place, name, time, state)
 

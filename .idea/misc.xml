@@ -23,6 +23,12 @@
         <entry key="..\:/Github/MyGifty/app/src/main/res/menu/info_menu.xml" value="0.25364583333333335" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/menu/main_menu.xml" value="0.25364583333333335" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/menu/regist_menu.xml" value="0.24947916666666667" />
+        <entry key="..\:/He/app/src/main/res/drawable/switch_thumb.xml" value="0.1638888888888889" />
+        <entry key="..\:/He/app/src/main/res/drawable/switch_track.xml" value="0.1638888888888889" />
+        <entry key="..\:/He/app/src/main/res/drawable/switch_track_off.xml" value="0.1638888888888889" />
+        <entry key="..\:/He/app/src/main/res/drawable/switch_track_on.xml" value="0.1638888888888889" />
+        <entry key="..\:/He/app/src/main/res/layout/activity_setting.xml" value="0.1" />
+        <entry key="..\:/He/app/src/main/res/layout/activity_slide_main.xml" value="0.1" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/drawable-v24/btn_regist.xml" value="0.14895833333333333" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/drawable-v24/editbox_border.xml" value="0.14895833333333333" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/drawable-v24/ic_regist.xml" value="0.15052083333333333" />
@@ -67,7 +73,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

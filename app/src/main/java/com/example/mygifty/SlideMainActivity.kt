@@ -35,8 +35,13 @@ class SlideMainActivity : AppCompatActivity() {
             my_intro_view_pager.currentItem = my_intro_view_pager.currentItem + 1
 
             if(my_intro_view_pager.currentItem==3){
-                val intent = Intent(this@SlideMainActivity,MainActivity::class.java)
-                startActivity(intent)
+                nextbtn.visibility= View.INVISIBLE
+                skipbtn.visibility= View.INVISIBLE
+                startbtn.visibility = View.VISIBLE
+                startbtn.setOnClickListener {
+                    val intent = Intent(this@SlideMainActivity, MainActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
 

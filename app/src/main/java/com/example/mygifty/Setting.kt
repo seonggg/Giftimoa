@@ -22,7 +22,8 @@ class Setting : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        getSupportActionBar()?.setIcon(R.drawable.minititle)
+        getSupportActionBar()?.setTitle("설정")
+//        getSupportActionBar()?.setIcon(R.drawable.minititle)
         getSupportActionBar()?.setDisplayUseLogoEnabled(true)
         getSupportActionBar()?.setDisplayShowHomeEnabled(true)
 

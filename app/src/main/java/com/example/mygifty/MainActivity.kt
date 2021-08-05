@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //타이틀바
         getSupportActionBar()?.setIcon(R.drawable.minititle)
         getSupportActionBar()?.setDisplayUseLogoEnabled(true)
         getSupportActionBar()?.setDisplayShowHomeEnabled(true)
@@ -58,25 +59,8 @@ class MainActivity : AppCompatActivity() {
         tabs = findViewById(R.id.tabs)
 
         // 탭 설정
-
-        tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                // 탭이 선택 되었을 때
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-                // 탭이 선택되지 않은 상태로 변경 되었을 때
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-                // 이미 선택된 탭이 다시 선택 되었을 때
-            }
-        })
         viewPager.adapter = PagerAdapter(this)
 
-        /* 탭과 뷰페이저를 연결, 여기서 새로운 탭을 다시 만드므로 레이아웃에서 꾸미지말고
-        여기서 꾸며야함
-         */
         TabLayoutMediator(tabs, viewPager) {tab, position ->
             when(position) {
                 0 -> tab.text = "전체"

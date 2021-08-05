@@ -67,8 +67,7 @@ open class RegistActivity : AppCompatActivity() {
 
         //이미지 추가하기
         regist_img = findViewById(R.id.regist_img)
-        regist_img.setOnClickListener({
-            //이미지 업로드 코드
+        regist_img.setOnClickListener({ //이미지 업로드 코드
             //권한이 부여되었는지 확인
             if (ContextCompat.checkSelfPermission(
                     this,
@@ -258,7 +257,7 @@ open class RegistActivity : AppCompatActivity() {
         Log.d("sys","추출완료")
     }
 
-    //사용 기한 날짜 추출
+    //사용 기한 날짜 추출 : 인식률이 너무 떨어져서 노가다로 코드 생성/
     fun detectdate(str: String){
         var index = 0
         var a = 0
