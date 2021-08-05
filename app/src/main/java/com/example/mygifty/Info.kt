@@ -33,6 +33,7 @@ class Info : AppCompatActivity() {
     lateinit var tv_place: TextView
     lateinit var tv_state: TextView
     lateinit var tv_memo: TextView
+    lateinit var location : ImageView
 
     lateinit var btnUse: Button
 
@@ -59,6 +60,7 @@ class Info : AppCompatActivity() {
         tv_place=findViewById(R.id.tv_place)
         tv_state=findViewById(R.id.tv_state)
         tv_memo=findViewById(R.id.tv_memo)
+        location = findViewById<ImageView>(R.id.location)
 
         btnUse=findViewById(R.id.btnUse)
 
@@ -130,6 +132,14 @@ class Info : AppCompatActivity() {
             btnUse.setBackgroundColor(Color.LTGRAY)
         }
 
+        //지도
+        location.setOnClickListener {
+            val intent = Intent(this,MapMainActivity::class.java)
+            startActivity(intent)
+
+        }
+
+
 
     }
 
@@ -147,6 +157,8 @@ class Info : AppCompatActivity() {
             }
             R.id.action_share -> {
                 //공유 구현해야함
+//                val intent = Intent(this,shareActivity::class.java)
+//                startActivity(intent)
                 return true
             }
             R.id.action_edit -> {
@@ -158,9 +170,9 @@ class Info : AppCompatActivity() {
             }
             R.id.action_delete -> {
                 //삭제
-                dbManager = DBManager(this, "gifticon",null,1)
+                dbManager = DBManager(this, "gifticon", null, 1)
                 sqlitedb = dbManager.readableDatabase
-                sqlitedb.execSQL("DELETE FROM gifticon WHERE uri = '"+str_uri+"';")
+                sqlitedb.execSQL("DELETE FROM gifticon WHERE uri = '" + str_uri + "';")
                 sqlitedb.close()
                 dbManager.close()
 

@@ -1,23 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.mygifty">
     <!-- 읽기 권한 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <!-- 현재위치 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="mygifty"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyGifty">
+        android:theme="@style/Theme.MyGifty"
+        tools:replace="android:appComponentFactory"
+        android:appComponentFactory="whateverString">
+
+        <!-- naver map api 사용-->
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="f9xslevbhq"/>
+
+        <activity
+            android:name=".MapMainActivity"
+            android:exported="true"
+            android:theme="@style/Splash"/>
         <activity
             android:name=".MainActivity"
             android:exported="true" />
         <activity
             android:name=".SlideMainActivity"
-            android:theme="@style/Splash"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Splash" />
         <activity
             android:name=".Info"
             android:theme="@style/Theme.Regist" />
@@ -27,7 +44,8 @@
         <activity
             android:name=".EditActivity"
             android:theme="@style/Theme.Regist" />
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,7 +68,6 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>
