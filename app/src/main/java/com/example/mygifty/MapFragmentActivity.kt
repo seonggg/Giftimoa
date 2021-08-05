@@ -41,7 +41,7 @@ class MapFragmentActivity : FragmentActivity(), OnMapReadyCallback {
         Log.d(TAG, "MainActivity - onMapReady")
 
         val marker = Marker()
-        marker.setPosition(LatLng(37.5670135, 126.9783740))
+        marker.setPosition(LatLng(37.612522, 127.163562))
         marker.setMap(naverMap)
 
 

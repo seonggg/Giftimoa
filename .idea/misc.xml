@@ -8,6 +8,8 @@
         <entry key="..\:/Github/MyGifty/app/src/main/res/drawable/ic_regist_btn.xml" value="0.26979166666666665" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/drawable/ic_regist_done.xml" value="0.26979166666666665" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/drawable/icon_min_background.xml" value="0.26979166666666665" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/drawable/row_itemback.xml" value="0.26979166666666665" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/drawable/switch_thumb.xml" value="0.26979166666666665" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_edit.xml" value="0.25364583333333335" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_info.xml" value="0.25364583333333335" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_main.xml" value="0.4" />
@@ -18,7 +20,7 @@
         <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_slide_main.xml" value="0.264" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_splash.xml" value="0.264" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/layout/fragment_first.xml" value="0.25364583333333335" />
-        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/fragment_map_view.xml" value="0.1" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/fragment_map_view.xml" value="0.264" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/layout/fragment_second.xml" value="0.25364583333333335" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/layout/fragment_third.xml" value="0.25364583333333335" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/layout/layout_intro_pager_item.xml" value="0.24947916666666667" />

@@ -85,8 +85,10 @@ class Info : AppCompatActivity() {
 
         var state_chk : Int = 1 //사용 가능
 
-        if(str_state != "사용 가능"){
+        if(str_state == "사용 완료"){
             state_chk = 0
+        }else if(str_state == "기한 만료"){
+            state_chk = 2
         }
 
         cursor.close()
@@ -104,22 +106,6 @@ class Info : AppCompatActivity() {
         tv_state.setText(str_state)
         tv_memo.setText(str_memo)
 
-
-        if(state_chk == 1) { //사용 가능이면 버튼 활성화
-            btnUse.setOnClickListener {
-                dbManager = DBManager(this, "gifticon", null, 1)
-                sqlitedb = dbManager.writableDatabase
-
-                sqlitedb.execSQL("UPDATE gifticon SET state = '사용 완료' WHERE uri = '" + str_uri + "';")
-                sqlitedb.close()
-                dbManager.close()
-            }
-        }
-        else{ //사용 불가면, 버튼 비활성화
-            //버튼 색 변경
-            btnUse.setBackgroundColor(Color.LTGRAY)
-        }
-
         //날짜 따라서 사용지나면 회색
         val calendar = Calendar.getInstance()
         val dateFormat = SimpleDateFormat("yyyy/MM/dd")
@@ -131,6 +117,36 @@ class Info : AppCompatActivity() {
             e.printStackTrace()
         }
         if(calendar.time>=datetime){
+            dbManager = DBManager(this, "gifticon", null, 1)
+            sqlitedb = dbManager.writableDatabase
+            sqlitedb.execSQL("UPDATE gifticon SET state = '기한 만료' WHERE uri = '" + str_uri + "';")
+            tv_state.setText("기한 만료")
+            state_chk = 2
+            sqlitedb.close()
+            dbManager.close()
+        }
+
+        if(state_chk == 1) { //사용 가능이면 버튼 활성화
+            btnUse.setBackgroundColor(this.getColor(R.color.colorPoint))
+            btnUse.setOnClickListener {
+                dbManager = DBManager(this, "gifticon", null, 1)
+                sqlitedb = dbManager.writableDatabase
+                sqlitedb.execSQL("UPDATE gifticon SET state = '사용 완료' WHERE uri = '" + str_uri + "';")
+                tv_state.setText("사용 완료")
+                btnUse.setBackgroundColor(Color.LTGRAY)
+                sqlitedb.close()
+                dbManager.close()
+            }
+        }else {
+            if (state_chk == 2) { //사용 불가면, 버튼 비활성화
+                //버튼 색 변경
+                dbManager = DBManager(this, "gifticon", null, 1)
+                sqlitedb = dbManager.writableDatabase
+                sqlitedb.execSQL("UPDATE gifticon SET state = '기한 만료' WHERE uri = '" + str_uri + "';")
+                tv_state.setText("기한 만료")
+                sqlitedb.close()
+                dbManager.close()
+            }
             btnUse.setBackgroundColor(Color.LTGRAY)
         }
 
