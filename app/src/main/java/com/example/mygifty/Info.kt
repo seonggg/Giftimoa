@@ -7,6 +7,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
@@ -150,19 +151,28 @@ class Info : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
-            android.R.id.home -> {
+            android.R.id.home -> {//뒤로가기
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
                 return true
             }
             R.id.action_share -> {
-                //공유 구현해야함
-//                val intent = Intent(this,shareActivity::class.java)
-//                startActivity(intent)
+                //공유
+                //jpg
+                val sharingIntent = Intent(Intent.ACTION_SEND)
+                val screenshotUri: Uri = Uri.parse(str_uri.toString()) // android image path
+
+                sharingIntent.type = "image/png"
+                sharingIntent.type = "image/gif"
+                sharingIntent.type = "image/jpeg"
+                sharingIntent.putExtra(Intent.EXTRA_STREAM, screenshotUri)
+                //sharingIntent.setPackage("com.kakao.talk");
+                startActivity(Intent.createChooser(sharingIntent, "Share image using")) // 변경가능
+
                 return true
             }
             R.id.action_edit -> {
-                //수정 구현해야함
+                //수정
                 val intent = Intent(this, EditActivity::class.java)
                 intent.putExtra("intent_uri", str_uri)
                 startActivity(intent)

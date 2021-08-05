@@ -105,22 +105,33 @@
                 android:layout_weight="1"
                 android:text="교환처" />
 
-            <ImageView
-                android:id="@+id/location"
-                android:layout_width="30sp"
-                android:layout_height="25sp"
-                android:background="@drawable/location" />
-
-            <TextView
-                android:id="@+id/tv_place"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:textAlignment="textEnd"
-                tools:ignore="RtlCompat"
-                android:layout_weight="1"/>
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/location"
+                    android:layout_width="30sp"
+                    android:layout_height="25sp"
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/location"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_place"
+                    tools:ignore="MissingConstraints" />
+
+                <TextView
+                    android:id="@+id/tv_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="MissingConstraints" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

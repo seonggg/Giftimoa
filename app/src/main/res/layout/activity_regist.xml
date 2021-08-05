@@ -7,107 +7,135 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:titleTextColor="@color/black"
-            app:title="기프티콘 등록하기">
-        </androidx.appcompat.widget.Toolbar>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextColor="@color/black"
+        app:title="기프티콘 등록">
+    </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/regist_img"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/add_img"
-            android:adjustViewBounds="true"
-            android:backgroundTint="#D3D3D3" />
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/name_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="기프티콘 이름"
-            android:textColor="@color/colorText"
-            android:layout_marginBottom="5dp"/>
+            <ImageView
+                android:id="@+id/regist_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/add_img"
+                android:adjustViewBounds="true"
+                android:backgroundTint="#D3D3D3" />
 
-        <EditText
-            android:id="@+id/name_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:background="@drawable/editbox_border"
-            android:layout_marginBottom="10dp"
-            android:hint=" 상품명"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/time_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="유효기간"
-            android:textColor="@color/colorText"
-            android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:id="@+id/name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="기프티콘 이름"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorText"/>
 
-        <EditText
-            android:id="@+id/time_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:background="@drawable/editbox_border"
-            android:layout_marginBottom="10dp"
-            android:hint=" 년/월/일"/>
+                <EditText
+                    android:id="@+id/name_edit"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint=" 상품명"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/place_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="교환처"
-            android:textColor="@color/colorText"
-            android:layout_marginBottom="5dp"/>
+            </LinearLayout>
 
-        <EditText
-            android:id="@+id/place_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:background="@drawable/editbox_border"
-            android:layout_marginBottom="10dp"
-            android:hint=" 교환처"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/memo_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="메모"
-            android:textColor="@color/colorText"
-            android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:id="@+id/time_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_weight="1"
+                    android:text="유효기간"
+                    android:textColor="@color/colorText"/>
 
-        <EditText
-            android:id="@+id/memo_edit"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:textColor="@color/black"
-            android:background="@drawable/editbox_border"
-            android:layout_marginBottom="10dp"
-            android:gravity="start"
-            android:hint=" 메모를 하세요."/>
+                <EditText
+                    android:id="@+id/time_edit"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:foregroundTint="#FFC01F"
+                    android:hint=" 년/월/일"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
 
-    </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/place_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_weight="1"
+                    android:text="교환처"
+                    android:textColor="@color/colorText"/>
+
+                <EditText
+                    android:id="@+id/place_edit"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint=" 교환처"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/memo_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="메모"
+                android:textSize="15sp"
+                android:textColor="@color/colorText"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/memo_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="start"
+                android:hint="메모를 하세요."
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+        </LinearLayout>
 
     </ScrollView>
 
