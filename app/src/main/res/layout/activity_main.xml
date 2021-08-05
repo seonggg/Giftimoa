@@ -54,11 +54,11 @@
 
         <ImageButton
             android:id="@+id/btnRegist"
-            android:layout_width="85dp"
-            android:layout_height="52dp"
+            android:layout_width="93dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/ic_regist_btn"
+            android:background="@drawable/btn_box"
             android:drawableLeft="@drawable/ic_regist"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"

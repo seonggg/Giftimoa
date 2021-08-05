@@ -3,12 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_main.xml" value="0.5150537634408602" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/drawable-v24/btn_regist.xml" value="0.26979166666666665" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/drawable/ic_creat.xml" value="0.26979166666666665" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/drawable/ic_regist_btn.xml" value="0.26979166666666665" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/drawable/ic_regist_done.xml" value="0.26979166666666665" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/drawable/icon_min_background.xml" value="0.26979166666666665" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_edit.xml" value="0.25364583333333335" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_info.xml" value="0.25364583333333335" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_map_main.xml" value="0.25364583333333335" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_regist.xml" value="0.24947916666666667" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_setting.xml" value="0.25364583333333335" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_setting_time.xml" value="0.24947916666666667" />
-        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_slide_main.xml" value="0.11354166666666667" />
-        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_splash.xml" value="0.24947916666666667" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_slide_main.xml" value="0.264" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/activity_splash.xml" value="0.264" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/fragment_first.xml" value="0.25364583333333335" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/fragment_map_view.xml" value="0.1" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/fragment_second.xml" value="0.25364583333333335" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/fragment_third.xml" value="0.25364583333333335" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/layout/layout_intro_pager_item.xml" value="0.24947916666666667" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/map_fragment_activity.xml" value="0.25364583333333335" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/layout/row_item.xml" value="0.25364583333333335" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/menu/info_menu.xml" value="0.25364583333333335" />
+        <entry key="..\:/Github/MyGifty/app/src/main/res/menu/main_menu.xml" value="0.25364583333333335" />
         <entry key="..\:/Github/MyGifty/app/src/main/res/menu/regist_menu.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/drawable-v24/btn_regist.xml" value="0.14895833333333333" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/drawable-v24/editbox_border.xml" value="0.14895833333333333" />
@@ -43,23 +60,7 @@
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/menu/main_menu.xml" value="0.2" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/menu/regist_menu.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/32191338/Desktop/c/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14895833333333333" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/drawable-v24/btn_regist.xml" value="0.26979166666666665" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/drawable-v24/editbox_border.xml" value="0.26979166666666665" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/drawable/icon_min_background.xml" value="0.26979166666666665" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/drawable/row_itemback.xml" value="0.26979166666666665" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/drawable/switch_track.xml" value="0.26979166666666665" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/layout/activity_edit.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/layout/activity_info.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/layout/activity_regist.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/layout/activity_setting.xml" value="0.4" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/layout/activity_setting_time.xml" value="0.4" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/layout/fragment_first.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/layout/row_item.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/menu/info_menu.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/menu/main_menu.xml" value="0.1111111111111111" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
-        <entry key="..\:/Users/32191338/Desktop/d/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyGifty/app/src/main/res/layout/activity_edit.xml" value="0.11822916666666666" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyGifty/app/src/main/res/layout/activity_regist.xml" value="0.11822916666666666" />
         <entry key="..\:/mmm/app/src/main/res/drawable/ic_creat.xml" value="0.1638888888888889" />

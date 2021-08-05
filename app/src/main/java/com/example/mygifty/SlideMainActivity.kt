@@ -45,10 +45,10 @@ class SlideMainActivity : AppCompatActivity() {
             }
         }
 
-        pageItemList.add(PageItem(R.drawable.onboarding11))
+        pageItemList.add(PageItem(R.drawable.onboarding1))
         pageItemList.add(PageItem(R.drawable.onboarding2))
-        pageItemList.add(PageItem(R.drawable.onboarding33))
-        pageItemList.add(PageItem(R.drawable.onboarding4))
+        pageItemList.add(PageItem(R.drawable.onboarding3))
+        pageItemList.add(PageItem(R.drawable.onboarding44))
 
 
         myIntroPagerRecyclerAdapter = MyIntroPagerRecyclerAdapter(pageItemList)

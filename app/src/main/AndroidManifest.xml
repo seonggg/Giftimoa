@@ -26,8 +26,8 @@
 
         <activity
             android:name=".MapMainActivity"
-            android:exported="true"
-            android:theme="@style/Splash"/>
+            android:exported="true"/>
+<!--            android:theme="@style/Theme.MyGifty"/>-->
         <activity
             android:name=".MainActivity"
             android:exported="true" />
