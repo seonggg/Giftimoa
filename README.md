@@ -33,3 +33,8 @@
 
 ### 기능 3 - 사용기한에 따른 푸쉬 알림
 ![image](https://github.com/seonggg/Giftimoa/assets/87373911/6795475b-f9e1-4e7f-907b-2e2f23247649)
+
+<br>
+
+## 시연 영상
+https://www.youtube.com/watch?v=I5fDVtXYPcA&feature=youtu.be
